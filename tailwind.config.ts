@@ -1,18 +1,31 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx}", // Adjust this to match your project structure
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // Custom color palettes if needed
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: "var(--foreground)",
+            a: {
+              color: "var(--foreground)",
+              "&:hover": {
+                color: "var(--foreground)",
+                textDecoration: "underline",
+              },
+            },
+          },
+        },
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [require("@tailwindcss/typography")],
+};
+
+export default config;
